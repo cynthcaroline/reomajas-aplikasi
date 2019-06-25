@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="/media/assets/img/logoreomajas.jpg">
+  <link rel="icon" type="image/png" href="/media/assets/img/logoreomajas.jpg">
+  <title>
+    REOMAJAS
+  </title>
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
+  <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+  <!-- Nucleo Icons -->
+  <link href="/media/assets/css/nucleo-icons.css" rel="stylesheet" />
+  <!-- CSS Files -->
+  <link href="/media/assets/css/blk-design-system.css?v=1.0.0" rel="stylesheet" />
+  <!-- CSS Just for demo purpose, don't include it in your project -->
+  <link href="/media/assets/demo/demo.css" rel="stylesheet" />
+</head>
+
+<body class="index-page">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top navbar-transparent " color-on-scroll="100">
+    <div class="container">
+      <div class="navbar-translate">
+        <a class="navbar-brand" href="#" rel="tooltip" title="REOMAJAS IS READY TO GO TO BALI" data-placement="bottom" target="_blank">
+          <span>REOMAJAS</span>
+        </a>
+        <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-bar bar1"></span>
+          <span class="navbar-toggler-bar bar2"></span>
+          <span class="navbar-toggler-bar bar3"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse justify-content-end" id="navigation">
+        <div class="navbar-collapse-header">
+          <div class="row">
+            <div class="col-6 collapse-brand">
+              <a>
+                REOMAJAS
+              </a>
+            </div>
+            <div class="col-6 collapse-close text-right">
+              <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="tim-icons icon-simple-remove"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <ul class="navbar-nav">
+          <a class="navbar-brand" rel="tooltip" title="REOMAJAS didukung oleh" data-placement="bottom" href="https://ristekdikti.go.id/">Kementerian Riset, Teknologi, Dan Pendidikan Tinggi Republik Indonesia</a>
+          <a class="navbar-brand" rel="tooltip" title="REOMAJAS didukung oleh" data-placement="bottom" href="https://unsri.ac.id/">Universitas Sriwijaya</a>
+          <a class="navbar-brand" rel="tooltip" title="PIMNAS 32 di Universitas Udayana, Bali" data-placement="bottom" href="https://pimnas32.unud.ac.id/">PIMNAS 32</a>
+
+          <li class="nav-item p-0">
+            <a class="nav-link" rel="tooltip" title="Instagram Sriwijaya Creativity Center" data-placement="bottom" href="https://www.instagram.com/sriwijayacreativitycentre/" target="_blank">
+              <i class="fab fa-instagram"></i>
+              <p class="d-lg-none d-xl-none">Instagram</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- End Navbar -->
+  <div class="wrapper">
+    <div class="page-header header-filter">
+      <div class="squares square1"></div>
+      <div class="squares square2"></div>
+      <div class="squares square3"></div>
+      <div class="squares square4"></div>
+      <div class="squares square5"></div>
+      <div class="squares square6"></div>
+      <div class="squares square7"></div>
+      <div class="container">
+        <div class="content-center brand">
+          <h1 class="h1-seo">REOMAJAS</h1>
+          <h3>Supervisor : Rossi Passarella, M.Eng.
+            <br> Ketua Tim : Irawan
+            <br> Anggota Tim : Cynthia Caroline, Ahmad Farhan Aristo
+            <br>
+            <br> REOMAJAS SIAP Ke PIMNAS 32, Universitas Udayana!
+          </h3>
+        </div>
+      </div>
+    </div>
+
+   <!-- system -->
+   <div class="main main-raised">
+    <div id="upload" class="section section-basic">
+      <div class="container">
+        <div class="title">
+          <h2 class="title">Rekognisi Objek Makanan dan Nutrisi</h2>
+        </div>
+        <!--  buttons -->
+        <div id="buttons" class="cd-section">
+          <div class="row">
+            <div class="col-md-6 ml-auto mr-auto">
+                            
+               <div class="title">
+                  <h4>Foto Makanan & Ambil Data Berat dari Kotak Makanan Ajaib
+                  </h4>
+                </div>
+                <div class="row">
+                    <div class="col-md-18 ml-auto mr-auto">
+                      <div class="row">
+                          <div class="col-md-6">
+                              <img id="img_preview" src="media/assets/img/noimage.png" alt="No Image" style="width: 100%;">
+                          </div>
+                          <br>
+                          <div class="col-md-6">
+                              <img id="img_preview1" src="media/assets/img/noimage.png" alt="No Image" style="width: 100%;">
+                          </div>
+                          <br>
+                      </div>
+                    </div>
+  
+                    <div class="col-md-18 ml-auto mr-auto">
+                      <br>
+                      <button onclick="upload()" class="btn btn-primary">Analisis Makanan</button>
+                      <button onclick="get_berat()" class="btn btn-primary">Ambil Data Berat</button>
+                      <div class="container">
+                       <h2>Jenis Kelamin :</h2>
+                       <form>
+                       <div class="form-group">
+                      <label for="gender">Pilih salah satu:</label>
+                      <select onchange="konsumsi()" class="form-control" id="gender">
+                      <option value="0">Laki-Laki </option>
+                      <option value="1">Perempuan </option>
+                      </select>
+                       <br>
+                      </div>
+                      </form>
+                      </div>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                   
+  
+                </div>
+            </div>
+  
+            <div class="col-md-18 ml-auto mr-auto">
+                <div class="title">
+                  <h3>Nutrition Facts
+                  </h3>
+                </div>
+  
+                <blockquote class="blockquote">
+                    <div class="container">
+                      <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <tr>
+                              <th>Jenis Makanan</th>
+                              <th>Berat Makanan (g)</th>
+                              <th>Energi (Kal)</th>
+                              <th>Karbohidrat (g)</th>
+                              <th>Protein (g)</th>
+                              <th>Fat (g)</th>
+                              <th>Fiber (g)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td id="cls_name"> - </td>
+                            <td id="berat_makanan">0</td>
+                            <td id="energi">0</td>
+                            <td id="karbohidrat">0</td>
+                            <td id="protein">0</td>
+                            <td id="fat">0</td>
+                            <td id="fiber">0</td>
+                          </tr>
+                          <tr>
+                            <td id="cls_name1"> - </td>
+                            <td id="berat_makanan1">0</td>
+                            <td id="energi1">0</td>
+                            <td id="karbohidrat1">0</td>
+                            <td id="protein1">0</td>
+                            <td id="fat1">0</td>
+                            <td id="fiber1">0</td>
+                          </tr>
+                          <tr>
+                            <td>Total</td>
+                            <td id="berat_total">0</td>
+                            <td id="energi_total">0</td>
+                            <td id="karbohidrat_total">0</td>
+                            <td id="protein_total">0</td>
+                            <td id="fat_total">0</td>
+                            <td id="fiber_total">0</td>
+                          </tr>                        
+                        </tbody>
+                      </table>
+                    </div>
+                    <br>
+                    <div class="container">
+                        <h3>Konsumsi (%)</h3>
+                      <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <tr>
+                              <th>Energi (%)</th>
+                              <th>Karbohidrat (%)</th>
+                              <th>Protein (%)</th>
+                              <th>Fat (%)</th>
+                              <th>Fiber (%)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td id="konsumsi_energi">0%</td>
+                            <td id="konsumsi_karbohidrat">0%</td>
+                            <td id="konsumsi_protein">0%</td>
+                            <td id="konsumsi_fat">0%</td>
+                            <td id="konsumsi_fiber">0%</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="container">
+                      <h4 id="result"> 
+                      </h4>
+                </blockquote>
+              </div>
+  
+          </div>
+      </div>
+    </div>
+    </div>
+  </div>
+  </div>
+
+
+      <div class="section section-download" id="#download-section" data-background-color="black">
+        <div class="container">
+          <br>
+          <br>
+          <div class="row row-grid align-items-center my-md">
+            <div class="col-lg-6">
+              <h3 class="text-primary font-weight-light mb-2">Terima Kasih Kepada</h3>
+              <h4 class="mb-0 font-weight-light">Kementerian Riset, Teknologi, dan Pendidikan Tinggi Republik Indonesia dan Universitas Sriwijaya</h4>
+              <h4 class="mb-0 font-weight-light">atas dukungan yang telah diberikan kepada REOMAJAS.</h4>
+              <br>
+              <h4 class="mb-0 font-weight-light">Kami SIAP ke PIMNAS 32 di Universitas Udayana!</h4>
+
+            </div>
+            <div class="col-lg-6 text-lg-center btn-wrapper">
+              <a id="facebook" class="btn btn-icon btn-facebook btn-round btn-lg" data-toggle="tooltip" data-original-title="Share!">
+                <i class="fab fa-facebook-square"></i>
+              </a>
+              <a id="instagram" class="btn btn-icon btn-instagram btn-round btn-lg" data-toggle="tooltip" data-original-title="Share!">
+                <i class="fab fa-instagram"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--  End Modal -->
+    </div>
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <h1 class="title">REOMAJAS</h1>
+          </div>
+          <div class="col-md-3">
+            <ul class="nav">
+              <li class="nav-item">
+                <a href="./index.html" class="nav-link">
+                  Home
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="https://ristekdikti.go.id/" class="nav-link">
+                  RISTEKDIKTI
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./examples/register-page.html" class="nav-link">
+                  Universitas Sriwijaya
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-3">
+            <ul class="nav">
+              <li class="nav-item">
+                <a href="https://pimnas32.unud.ac.id/" class="nav-link">
+                  PIMNAS 32 Universitas Udayana
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="###" class="nav-link">
+                  Cara Penggunaan Alat
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  Cara Penggunaan Software
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-3">
+            <h3 class="title">Bergabung Bersama Komunitas Kami Di :</h3>
+            <div class="btn-wrapper profile">
+              <a target="_blank" href="https://www.instagram.com/sriwijayacreativitycentre/" class="btn btn-icon btn-neutral btn-round btn-simple" data-toggle="tooltip" data-original-title="Follow us">
+                <i class="fab fa-instagram"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <!--   Core JS Files   -->
+  <script src="/media/assets/js/core/jquery.min.js" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+  <script src="/media/assets/js/core/popper.min.js" type="text/javascript"></script>
+  <script src="/media/assets/js/core/bootstrap.min.js" type="text/javascript"></script>
+  <script src="/media/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+  <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
+  <script src="/media/assets/js/plugins/bootstrap-switch.js"></script>
+  <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+  <script src="/media/assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
+  <!-- Chart JS -->
+  <script src="/media/assets/js/plugins/chartjs.min.js"></script>
+  <!--  Plugin for the DatePicker, full documentation here: https://github.com/uxsolutions/bootstrap-datepicker -->
+  <script src="/media/assets/js/plugins/moment.min.js"></script>
+  <script src="/media/assets/js/plugins/bootstrap-datetimepicker.js" type="text/javascript"></script>
+  <!-- Black Dashboard DEMO methods, don't include it in your project! -->
+  <script src="/media/assets/demo/demo.js"></script>
+  <!-- Control Center for Black UI Kit: parallax effects, scripts for the example pages etc -->
+  <script src="/media/assets/js/blk-design-system.min.js?v=1.0.0" type="text/javascript"></script>
+
+
+  <form id="uploadFileForm" enctype="multipart/form-data">
+    <input type="file" id="uploadFile" accept="image/x-png,image/jpeg" name="img_data" style="display:none;" />
+    <input type="file" id="uploadFile1" accept="image/x-png,image/jpeg" name="img_data1" style="display:none;" />
+  </form>
+
+</body>
+
+<script>
+  var nutrisi;
+  var nutrisi1;
+
+  $("#img_preview").click(function () {
+    $('#uploadFile').click();
+  });
+
+  $("#img_preview1").click(function () {
+    $('#uploadFile1').click();
+  });
+
+  function calc_nutrisi(berat, berat1) {
+    if (nutrisi !== false && nutrisi1 != false) {
+      console.log(nutrisi);
+      console.log(nutrisi1);
+    }
+
+    //calc. nutrisi
+    var energi = roundToTwo((nutrisi.energy_100g / 100) * berat);
+    var karbohidrat = roundToTwo((nutrisi.carbohydrates_100g/ 100) * berat);
+    var fat = roundToTwo((nutrisi.fat_100g / 100) * berat);
+    var protein = roundToTwo((nutrisi.proteins_100g / 100) * berat);
+    var fiber = roundToTwo((nutrisi.fiber_100g / 100) * berat);
+
+    var energi1 = roundToTwo((nutrisi1.energy_100g / 100) * berat1);
+    var karbohidrat1 = roundToTwo((nutrisi1.carbohydrates_100g/ 100) * berat1);
+    var fat1 = roundToTwo((nutrisi1.fat_100g / 100) * berat1);
+    var protein1 = roundToTwo((nutrisi1.proteins_100g / 100) * berat1);
+    var fiber1 = roundToTwo((nutrisi1.fiber_100g / 100) * berat1);
+
+    var berat_total = roundToTwo(berat1 + berat);
+    var energi_total = roundToTwo(energi + energi1);
+    var karbohidrat_total = roundToTwo(karbohidrat + karbohidrat1);
+    var fat_total = roundToTwo(fat + fat1);
+    var protein_total = roundToTwo(protein + protein1);
+    var fiber_total = roundToTwo(fiber + fiber1);
+
+
+    //show data
+    $('#berat_total').html(berat_total);
+    $('#energi_total').html(energi_total);
+    $('#karbohidrat_total').html(karbohidrat_total);
+    $('#fat_total').html(fat_total);
+    $('#protein_total').html(protein_total);
+    $('#fiber_total').html(fiber_total);
+
+    $('#berat_makanan').html(berat);
+    $('#energi').html(energi);
+    $('#karbohidrat').html(karbohidrat);
+    $('#fat').html(fat);
+    $('#protein').html(protein);
+    $('#fiber').html(fiber);
+
+    $('#berat_makanan1').html(berat1);
+    $('#energi1').html(energi1);
+    $('#karbohidrat1').html(karbohidrat1);
+    $('#fat1').html(fat1);
+    $('#protein1').html(protein1);
+    $('#fiber1').html(fiber1);
+
+    konsumsi();
+  }
+//konsumsi%
+  function konsumsi() {
+    var energi_total = $('#energi_total').text();
+    var karbohidrat_total = $('#karbohidrat_total').text();
+    var protein_total = $('#protein_total').text();
+    var fat_total = $('#fat_total').text();
+    var fiber_total = $('#fiber_total').text();
+
+    var konsumsi_energi;
+    var konsumsi_karbohidrat;
+    var konsumsi_protein;
+    var konsumsi_fat;
+    var konsumsi_fiber;
+
+    if ($('#gender').val() == 0) {
+      console.log('Laki-laki');
+      konsumsi_energi = roundToTwo((energi_total / 2725) * 100);
+      konsumsi_karbohidrat = roundToTwo((karbohidrat_total / 375) * 100);
+      konsumsi_protein = roundToTwo((protein_total / 62) * 100);
+      konsumsi_fat = roundToTwo((fat_total / 91) * 100);
+      konsumsi_fiber = roundToTwo((fiber_total / 38) * 100);
+    } else {
+      console.log('Perempuan');
+      konsumsi_energi = roundToTwo((energi_total / 2250) * 100);
+      konsumsi_karbohidrat = roundToTwo((karbohidrat_total / 309) * 100);
+      konsumsi_protein = roundToTwo((protein_total / 56) * 100);
+      konsumsi_fat = roundToTwo((fat_total / 75) * 100);
+      konsumsi_fiber = roundToTwo((fiber_total / 32) * 100);
+    }
+    var opt = '';
+    if (konsumsi_energi >= 30 && konsumsi_energi <= 40) {
+      opt += 'Energi cukup, '
+    } else if(konsumsi_energi < 30 ){
+      opt += 'Energi kurang, '
+    } else{
+      opt += 'Energi berlebih, ';
+    }
+
+    if (konsumsi_karbohidrat >= 30 && konsumsi_karbohidrat <= 40) {
+      opt += 'Karbohidrat cukup, '
+    } else if(konsumsi_karbohidrat < 30 ){
+      opt += 'Karbohidrat kurang, '
+    } else{
+      opt += 'Karbihidrat berlebih, ';
+    }
+
+    if (konsumsi_protein >= 30 && konsumsi_protein <= 40) {
+      opt += 'Protein cukup, '
+    } else if(konsumsi_protein < 30 ){
+      opt += 'Protein kurang, '
+    } else{
+      opt += 'Protein berlebih, ';
+    }
+
+    if (konsumsi_fat >= 30 && konsumsi_fat <= 40) {
+      opt += 'Lemak cukup, '
+    } else if(konsumsi_fat < 30 ){
+      opt += 'Lemak kurang, '
+    } else{
+      opt += 'Lemak berlebih, ';
+    }
+
+    if (konsumsi_fiber >= 30 && konsumsi_fiber <= 40) {
+      opt += ' dan Serat cukup.'
+    } else if(konsumsi_fiber < 30 ){
+      opt += ' dan Serat kurang.'
+    } else{
+      opt += ' dan Serat berlebih.';
+    }
+    
+    $('#result').html('REOMAJAS menyimpulkan bahwa yang Anda konsumsi ' + opt);
+    $('#konsumsi_energi').html(konsumsi_energi + '%');
+    $('#konsumsi_karbohidrat').html(konsumsi_karbohidrat + '%');
+    $('#konsumsi_protein').html(konsumsi_protein + '%');
+    $('#konsumsi_fat').html(konsumsi_fat + '%');
+    $('#konsumsi_fiber').html(konsumsi_fiber + '%');
+
+  }
+
+  function roundToTwo(num) {    
+    return +(Math.round(num + "e+2")  + "e-2");
+  }
+
+  function get_berat() {
+    $.ajax({
+                url: "https://indorobot.net/project",
+                type: 'GET',
+                contentType: false,
+                processData: false,
+                beforeSend: function(){
+
+                  Swal.fire({
+                        title: 'Loading...',
+                        html: 'Memuat berat makanan...',
+                        onBeforeOpen: () => {
+                          Swal.showLoading()
+                        }
+                      });
+
+                },
+                success: function(response){
+                  calc_nutrisi(response.berat,response.berat1);
+                },
+                error: function (jqXHR, exception) {
+
+                },
+                complete:function(data){
+                  Swal.close();
+                }
+            });
+  }
+
+  function show_results(data) {
+    nutrisi = data.nutrisi1;
+    nutrisi1 = data.nutrisi;
+
+    //show food name on table
+    $('#cls_name').html(data.cls_name);
+    $('#cls_name1').html(data.cls_name1);
+  }
+
+  function upload() {
+    var imgForm = document.getElementById('uploadFileForm');
+    var fd = new FormData(imgForm)
+    $.ajax({
+                url: "http://127.0.0.1:8000/api/recognize-food",
+                type: 'POST',
+                data: fd,
+                contentType: false,
+                processData: false,
+                beforeSend: function(){
+                  Swal.fire({
+                        title: 'Loading...',
+                        html: 'Mendeteksi makanan..',
+                        onBeforeOpen: () => {
+                          Swal.showLoading()
+                        }
+                      });
+                },
+                success: function(response){
+                  show_results(response)
+                },
+                error: function (jqXHR, exception) {
+
+                },
+                complete:function(data){
+                  Swal.close();
+                }
+            });
+  }
+
+  function readURL(input, tag) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+              $(tag).attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+  }
+
+  $('#uploadFile').on('change', function() {
+      readURL(this,'#img_preview');
+    });
+
+    $('#uploadFile1').on('change', function() {
+      readURL(this,'#img_preview1');
+    });
+
+</script>
+
+</html>
