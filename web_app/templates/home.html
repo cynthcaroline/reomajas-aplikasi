@@ -410,7 +410,7 @@
           </form>
           </div>  
         <div class="modal-footer">
-            <button class="btn btn-success" id="insert" data-dismiss="modal">INSERT</button>
+            <button class="btn btn-success" id="insert" data-dismiss="modal" onclick="konsumsi()">INSERT</button>
         </div>
        </div>
       </div>
@@ -458,6 +458,11 @@
       console.log(nutrisi2);
       console.log(nutrisi3);
     }
+
+    berat = parseInt(berat);
+    berat1 = parseInt(berat1);
+    berat2 = parseInt(berat2);
+    berat3 = parseInt(berat3);
 
     //calc. nutrisi
     var energi = roundToTwo((nutrisi.energy_100g / 100) * berat);
@@ -545,67 +550,80 @@
     var konsumsi_protein;
     var konsumsi_fat;
     var konsumsi_fiber;
-    var activity_arr = [1.2,1.3,1.6,1.7,2.1,2.4]
-    var activity = activity_arr[$('#activity').val()]
+    var activity_arr_men = [1.2,1.3,1.6,1.7,2.1,2.4]
+    var activity_arr_women = [1.2,1.3,1.5,1.6,1.9,2.2]
     var age = $('#age').val()
+    var name = $('#name').val()
     var height = $('#height').val()
     var weight = $('#weight').val()
+    var energy_needed = 0
 
     if ($('#gender').val() == 0) {
-      console.log('Laki-laki');
-      bmr = energi_total + (13.97 * weight) + (4.799 * height) + (5.677 * age);
-      konsumsi_energi = roundToTwo((energi_total / 2725) * 100);
+      activity = activity_arr_men[$('#activity').val()]
+      bmr = 88.362 + (13.97 * weight) + (4.799 * height) + (5.677 * age);
+      energy_needed = bmr * activity;
+      konsumsi_energi = roundToTwo((energi_total / energy_needed) * 100);
       
       konsumsi_karbohidrat = roundToTwo((karbohidrat_total / 375) * 100);
       konsumsi_protein = roundToTwo((protein_total / 62) * 100);
       konsumsi_fat = roundToTwo((fat_total / 91) * 100);
       konsumsi_fiber = roundToTwo((fiber_total / 38) * 100);
     } else {
-      console.log('Perempuan');
+      activity = activity_arr_women[$('#activity').val()]
+      bmr = 447.593 + (9.247 * weight) + (3.098 * height) + (4.330 * age);
+      energy_needed = bmr * activity;
+      konsumsi_energi = roundToTwo((energi_total / energy_needed) * 100);
+
       konsumsi_energi = roundToTwo((energi_total / 2250) * 100);
       konsumsi_karbohidrat = roundToTwo((karbohidrat_total / 309) * 100);
       konsumsi_protein = roundToTwo((protein_total / 56) * 100);
       konsumsi_fat = roundToTwo((fat_total / 75) * 100);
       konsumsi_fiber = roundToTwo((fiber_total / 32) * 100);
     }
-    var opt = '';
+    var opt = 'Dari hasil analisis, <strong>REOMAJAS</strong> menyatakan bahwa <strong>' + 
+      name + '</strong>' + ' <br>- Umur : ' + age + ' tahun' + 
+      ' <br>- Tinggi Badan : ' + height + ' CM' + ' <br>- Berat Badan : ' + 
+      weight + ' KG <br>';
+
     if (konsumsi_energi >= 30 && konsumsi_energi <= 40) {
-      opt += 'Energi cukup, '
+      opt += 'Konsumsi <strong>Energi</strong> cukup, '
     } else if(konsumsi_energi < 30 ){
-      opt += 'Energi kurang, '
+      opt += 'Konsumsi <strong>Energi</strong> kurang, '
     } else{
-      opt += 'Energi berlebih, ';
+      opt += 'Konsumsi <strong>Energi</strong> berlebih, ';
     }
     if (konsumsi_karbohidrat >= 30 && konsumsi_karbohidrat <= 40) {
-      opt += 'Karbohidrat cukup, '
+      opt += 'Konsumsi <strong>Karbohidrat</strong> cukup, '
     } else if(konsumsi_karbohidrat < 30 ){
-      opt += 'Karbohidrat kurang, '
+      opt += 'Konsumsi <strong>Karbohidrat</strong> kurang, '
     } else{
-      opt += 'Karbihidrat berlebih, ';
+      opt += 'Konsumsi <strong>Karbohidrat</strong> berlebih, ';
     }
     if (konsumsi_protein >= 30 && konsumsi_protein <= 40) {
-      opt += 'Protein cukup, '
+      opt += 'Konsumsi <strong>Protein</strong> cukup, '
     } else if(konsumsi_protein < 30 ){
-      opt += 'Protein kurang, '
+      opt += 'Konsumsi <strong>Protein</strong> kurang, '
     } else{
-      opt += 'Protein berlebih, ';
+      opt += 'Konsumsi <strong>Protein</strong> berlebih, ';
     }
     if (konsumsi_fat >= 30 && konsumsi_fat <= 40) {
-      opt += 'Lemak cukup, '
+      opt += 'Konsumsi <strong>Lemak</strong> cukup, '
     } else if(konsumsi_fat < 30 ){
-      opt += 'Lemak kurang, '
+      opt += 'Konsumsi <strong>Lemak</strong> kurang, '
     } else{
-      opt += 'Lemak berlebih, ';
+      opt += 'Konsumsi <strong>Lemak</strong> berlebih, ';
     }
     if (konsumsi_fiber >= 30 && konsumsi_fiber <= 40) {
-      opt += ' dan Serat cukup.'
+      opt += ' dan Konsumsi <strong>Serat</strong> cukup.'
     } else if(konsumsi_fiber < 30 ){
-      opt += ' dan Serat kurang.'
+      opt += ' dan Konsumsi <strong>Serat</strong> kurang.'
     } else{
-      opt += ' dan Serat berlebih.';
+      opt += ' dan Konsumsi <strong>Serat</strong> berlebih.';
     }
     
-    $('#result').html('REOMAJAS menyimpulkan bahwa yang Anda konsumsi ' + opt);
+
+
+    $('#result').html(opt);
     $('#konsumsi_energi').html(konsumsi_energi + '%');
     $('#konsumsi_karbohidrat').html(konsumsi_karbohidrat + '%');
     $('#konsumsi_protein').html(konsumsi_protein + '%');
@@ -703,62 +721,6 @@ function show_result(response) {
       + '<br> Selain itu, Anda juga '+ response.konsumsi + ' <br> <br> <a href="/media/result/report.docx" download>Unduh Laporan</a>'
       $('#result').html(opt);
     }
-
-      $('#insert').on( 'click', function () {
-            var dataform = document.getElementById('insert_form')
-            var fd = new FormData(dataform);
-            var error = false;
-            var errorCode = ''
-            var errorText = ''
-            $.ajax({
-                url: "http://127.0.0.1:8000/hasil_json/",
-                type: 'POST',
-                data: fd,
-                contentType: false,
-                processData: false,
-                beforeSend: function(){
-                  Swal.fire({
-                        title: 'Loading...',
-                        html: 'Mohon menunggu hasil perhitungan personalisasi.......',
-                        onBeforeOpen: () => {
-                          Swal.showLoading()
-                        }
-                      });
-                  },
-                success: function(response){
-                  dataform.reset();
-                  show_result(response);
-                  console.log(response);
-                },
-                error: function (jqXHR, exception) {
-                    console.log();
-                    errorCode = jqXHR.status;
-                    errorText = jqXHR.statusText;
-                    error = true;
-                    // Your error handling logic here..
-                },
-                complete:function(data){
-                  Swal.close();
-                  if (error == true) {
-                    Swal.fire({
-                      position: 'top-end',
-                      type: 'error',
-                      title: errorCode + ': ' + errorText,
-                      showConfirmButton: false,
-                      timer: 2000
-                    });
-                  } else{
-                    Swal.fire({
-                      position: 'top-end',
-                      type: 'success',
-                      title: 'Perhitungan personalisasi berhasil!',
-                      showConfirmButton: false,
-                      timer: 2000
-                    });
-                  }
-                }
-            });
-          });
 
 //batas
   function readURL(input, tag) {
