@@ -100,9 +100,10 @@
             <div class="col-md-6 ml-auto mr-auto">
                             
                <div class="title">
-                  <h4>Foto Makanan & Ambil Data Berat dari Kotak Makanan Ajaib
+                  <h4>Foto Makanan & Ambil Data Berat dari Kotak Makanan
                   </h4>
                 </div>
+                <!---body gambar-->
                 <div class="row">
                     <div class="col-md-18 ml-auto mr-auto">
                       <div class="row">
@@ -114,26 +115,40 @@
                               <img id="img_preview1" src="media/assets/img/noimage.png" alt="No Image" style="width: 100%;">
                           </div>
                           <br>
+                          <br>
+                          <br>
+                          <br>
+                          <br>
+                          <br>
+                          <br>
+                          <br>
+                          <br>
+                          <br>
+                          <br>
+                          <br>
+                          <br>
+                          <br>
+                          <div class="col-md-6">
+                              <img id="img_preview2" src="media/assets/img/noimage.png" alt="No Image" style="width: 100%;">
+                          </div>
+                          <br>
+                          <div class="col-md-6">
+                              <img id="img_preview3" src="media/assets/img/noimage.png" alt="No Image" style="width: 100%;">
+                          </div>
                       </div>
                     </div>
   
                     <div class="col-md-18 ml-auto mr-auto">
                       <br>
+                      <br>
                       <button onclick="upload()" class="btn btn-primary">Analisis Makanan</button>
                       <button onclick="get_berat()" class="btn btn-primary">Ambil Data Berat</button>
-                      <div class="container">
-                       <h2>Jenis Kelamin :</h2>
-                       <form>
-                       <div class="form-group">
-                      <label for="gender">Pilih salah satu:</label>
-                      <select onchange="konsumsi()" class="form-control" id="gender">
-                      <option value="0">Laki-Laki </option>
-                      <option value="1">Perempuan </option>
-                      </select>
-                       <br>
-                      </div>
-                      </form>
-                      </div>
+                      <br>
+                      <br>
+                      <div class="col-md-8 ml-auto mr-auto">
+                          <button type="button" data-toggle="modal" data-target="#add_data_Modal" class="btn btn-primary">Personalisasi Pengguna</button>
+                        </div>
+
                     </div>
                     <br>
                     <br>
@@ -184,6 +199,24 @@
                             <td id="fiber1">0</td>
                           </tr>
                           <tr>
+                              <td id="cls_name2"> - </td>
+                              <td id="berat_makanan2">0</td>
+                              <td id="energi2">0</td>
+                              <td id="karbohidrat2">0</td>
+                              <td id="protein2">0</td>
+                              <td id="fat2">0</td>
+                              <td id="fiber2">0</td>
+                            </tr>
+                            <tr>
+                                <td id="cls_name3"> - </td>
+                                <td id="berat_makanan3">0</td>
+                                <td id="energi3">0</td>
+                                <td id="karbohidrat3">0</td>
+                                <td id="protein3">0</td>
+                                <td id="fat3">0</td>
+                                <td id="fiber3">0</td>
+                              </tr>
+                          <tr>
                             <td>Total</td>
                             <td id="berat_total">0</td>
                             <td id="energi_total">0</td>
@@ -197,8 +230,9 @@
                     </div>
                     <br>
                     <div class="container">
-                        <h3>Konsumsi (%)</h3>
+                        <h3> Hasil Personalisasi Pengguna </h3>
                       <table class="table table-striped">
+                        <h4><b>Konsumsi (%)</b></h4>
                         <thead>
                           <tr>
                             <tr>
@@ -219,10 +253,12 @@
                           </tr>
                         </tbody>
                       </table>
+                      <h4><b>Analisis REOMAJAS </h4></b>
                     </div>
                     <div class="container">
                       <h4 id="result"> 
                       </h4>
+                    </div>
                 </blockquote>
               </div>
   
@@ -269,7 +305,7 @@
           <div class="col-md-3">
             <ul class="nav">
               <li class="nav-item">
-                <a href="./index.html" class="nav-link">
+                <a href="www.reomajas.com" class="nav-link">
                   Home
                 </a>
               </li>
@@ -279,7 +315,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./examples/register-page.html" class="nav-link">
+                <a href="https://unsri.ac.id" class="nav-link">
                   Universitas Sriwijaya
                 </a>
               </li>
@@ -336,10 +372,57 @@
   <!-- Control Center for Black UI Kit: parallax effects, scripts for the example pages etc -->
   <script src="/media/assets/js/blk-design-system.min.js?v=1.0.0" type="text/javascript"></script>
 
+  <!--form personalisasi pengguna-->
+  <div id="add_data_Modal" class="modal fade">
+      <div class="modal-dialog">
+       <div class="modal-content">
+        <div class="modal-header">
+         <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+         <form method="post" id="insert_form">
+            <label>Nama Anda</label>
+            <input type="text" name="name" id="name" class="form-control" placeholder="Nama Anda...." style="color:black;" />
+            <br />
+            <label>Usia</label>
+            <input type="text" name = "age" id="age" class="form-control" placeholder="Usia Anda dalam Tahun..." style="color:black;"/>
+            <br />
+            <label>Tinggi Badan</label>
+            <input type="text" name = "height" id="height" class="form-control" placeholder="Tinggi Badan Anda dalam CM..." style="color:black;"/>
+            <br />
+            <label>Berat Badan</label>
+            <input type="text" name = "weight" id="weight" class="form-control" placeholder="Berat Badan Anda dalam KG..." style="color:black;"/>
+            <br />
+            <label>Jenis Kelamin</label>
+            <select name="gender" class="form-control" id="gender" style="color:black;">
+                <option value="Laki-Laki">Laki-Laki </option>
+                <option value="Perempuan">Perempuan </option>
+            </select>
+            <label>Level Aktivitas</label>
+            <select name="activity" class="form-control" id="activity" style="color:black;">
+            <option value="Sedentary or Confined to bed">Sedentary or Confined to bed </option> 
+            <option value="Very Light Activity">Very Light Activity </option>
+            <option value="Light Activity">Light Activity </option>
+            <option value="Moderate Activity">Moderate Activity </option>
+            <option value="Heavy Activity">Heavy Activity </option>
+            <option value="Exceptional Activity">Exceptional Activity </option>
+            </select>
+          </form>
+          </div>  
+        <div class="modal-footer">
+            <button class="btn btn-success" id="insert" data-dismiss="modal">INSERT</button>
+        </div>
+       </div>
+      </div>
+     </div>
+  
+
 
   <form id="uploadFileForm" enctype="multipart/form-data">
     <input type="file" id="uploadFile" accept="image/x-png,image/jpeg" name="img_data" style="display:none;" />
     <input type="file" id="uploadFile1" accept="image/x-png,image/jpeg" name="img_data1" style="display:none;" />
+    <input type="file" id="uploadFile2" accept="image/x-png,image/jpeg" name="img_data2" style="display:none;" />
+    <input type="file" id="uploadFile3" accept="image/x-png,image/jpeg" name="img_data3" style="display:none;" />
   </form>
 
 </body>
@@ -347,6 +430,8 @@
 <script>
   var nutrisi;
   var nutrisi1;
+  var nutrisi2;
+  var nutrisi3;
 
   $("#img_preview").click(function () {
     $('#uploadFile').click();
@@ -356,10 +441,22 @@
     $('#uploadFile1').click();
   });
 
-  function calc_nutrisi(berat, berat1) {
+  $("#img_preview2").click(function () {
+    $('#uploadFile2').click();
+  });
+
+  $("#img_preview3").click(function () {
+    $('#uploadFile3').click();
+  });
+
+  function calc_nutrisi(berat, berat1, berat2, berat3) {
     if (nutrisi !== false && nutrisi1 != false) {
       console.log(nutrisi);
       console.log(nutrisi1);
+      }
+    else if (nutrisi2 !== false && nutrisi3 != false){
+      console.log(nutrisi2);
+      console.log(nutrisi3);
     }
 
     //calc. nutrisi
@@ -375,12 +472,24 @@
     var protein1 = roundToTwo((nutrisi1.proteins_100g / 100) * berat1);
     var fiber1 = roundToTwo((nutrisi1.fiber_100g / 100) * berat1);
 
-    var berat_total = roundToTwo(berat1 + berat);
-    var energi_total = roundToTwo(energi + energi1);
-    var karbohidrat_total = roundToTwo(karbohidrat + karbohidrat1);
-    var fat_total = roundToTwo(fat + fat1);
-    var protein_total = roundToTwo(protein + protein1);
-    var fiber_total = roundToTwo(fiber + fiber1);
+    var energi2 = roundToTwo((nutrisi2.energy_100g / 100) * berat2);
+    var karbohidrat2 = roundToTwo((nutrisi2.carbohydrates_100g/ 100) * berat2);
+    var fat2 = roundToTwo((nutrisi2.fat_100g / 100) * berat2);
+    var protein2 = roundToTwo((nutrisi2.proteins_100g / 100) * berat2);
+    var fiber2 = roundToTwo((nutrisi2.fiber_100g / 100) * berat2);
+
+    var energi3 = roundToTwo((nutrisi3.energy_100g / 100) * berat3);
+    var karbohidrat3 = roundToTwo((nutrisi3.carbohydrates_100g/ 100) * berat3);
+    var fat3 = roundToTwo((nutrisi3.fat_100g / 100) * berat3);
+    var protein3 = roundToTwo((nutrisi3.proteins_100g / 100) * berat3);
+    var fiber3 = roundToTwo((nutrisi3.fiber_100g / 100) * berat3);
+
+    var berat_total = parseInt(berat3 + berat2 + berat1 + berat);
+    var energi_total = roundToTwo(energi + energi1 + energi2 +  energi3);
+    var karbohidrat_total = roundToTwo(karbohidrat + karbohidrat1 + karbohidrat2 + karbohidrat3);
+    var fat_total = roundToTwo(fat + fat1 + fat2 + fat3);
+    var protein_total = roundToTwo(protein + protein1 + protein2 + protein3);
+    var fiber_total = roundToTwo(fiber + fiber1 + fiber2 + fiber3);
 
 
     //show data
@@ -405,22 +514,37 @@
     $('#protein1').html(protein1);
     $('#fiber1').html(fiber1);
 
-    konsumsi();
+    $('#berat_makanan2').html(berat2);
+    $('#energi2').html(energi2);
+    $('#karbohidrat1').html(karbohidrat2);
+    $('#fat1').html(fat2);
+    $('#protein2').html(protein2);
+    $('#fiber2').html(fiber2);
+
+    $('#berat_makanan3').html(berat3);
+    $('#energi3').html(energi3);
+    $('#karbohidrat3').html(karbohidrat3);
+    $('#fat3').html(fat3);
+    $('#protein3').html(protein3);
+    $('#fiber3').html(fiber3);
+
+    //konsumsi();
   }
+
 //konsumsi%
-  function konsumsi() {
+  //function konsumsi() {
+    //ambil data energi total dll
+    function konsumsi() {
     var energi_total = $('#energi_total').text();
     var karbohidrat_total = $('#karbohidrat_total').text();
     var protein_total = $('#protein_total').text();
     var fat_total = $('#fat_total').text();
     var fiber_total = $('#fiber_total').text();
-
     var konsumsi_energi;
     var konsumsi_karbohidrat;
     var konsumsi_protein;
     var konsumsi_fat;
     var konsumsi_fiber;
-
     if ($('#gender').val() == 0) {
       console.log('Laki-laki');
       konsumsi_energi = roundToTwo((energi_total / 2725) * 100);
@@ -444,7 +568,6 @@
     } else{
       opt += 'Energi berlebih, ';
     }
-
     if (konsumsi_karbohidrat >= 30 && konsumsi_karbohidrat <= 40) {
       opt += 'Karbohidrat cukup, '
     } else if(konsumsi_karbohidrat < 30 ){
@@ -452,7 +575,6 @@
     } else{
       opt += 'Karbihidrat berlebih, ';
     }
-
     if (konsumsi_protein >= 30 && konsumsi_protein <= 40) {
       opt += 'Protein cukup, '
     } else if(konsumsi_protein < 30 ){
@@ -460,7 +582,6 @@
     } else{
       opt += 'Protein berlebih, ';
     }
-
     if (konsumsi_fat >= 30 && konsumsi_fat <= 40) {
       opt += 'Lemak cukup, '
     } else if(konsumsi_fat < 30 ){
@@ -468,7 +589,6 @@
     } else{
       opt += 'Lemak berlebih, ';
     }
-
     if (konsumsi_fiber >= 30 && konsumsi_fiber <= 40) {
       opt += ' dan Serat cukup.'
     } else if(konsumsi_fiber < 30 ){
@@ -483,8 +603,9 @@
     $('#konsumsi_protein').html(konsumsi_protein + '%');
     $('#konsumsi_fat').html(konsumsi_fat + '%');
     $('#konsumsi_fiber').html(konsumsi_fiber + '%');
-
   }
+
+//batas
 
   function roundToTwo(num) {    
     return +(Math.round(num + "e+2")  + "e-2");
@@ -492,7 +613,7 @@
 
   function get_berat() {
     $.ajax({
-                url: "https://indorobot.net/project",
+                url: "https://indorobot.net/project/reomajas",
                 type: 'GET',
                 contentType: false,
                 processData: false,
@@ -508,7 +629,7 @@
 
                 },
                 success: function(response){
-                  calc_nutrisi(response.berat,response.berat1);
+                  calc_nutrisi(response.berat,response.berat1,response.berat2,response.berat3);
                 },
                 error: function (jqXHR, exception) {
 
@@ -520,12 +641,16 @@
   }
 
   function show_results(data) {
-    nutrisi = data.nutrisi1;
-    nutrisi1 = data.nutrisi;
+    nutrisi = data.nutrisi;
+    nutrisi1 = data.nutrisi1;
+    nutrisi2 = data.nutrisi2;
+    nutrisi3 = data.nutrisi3;
 
     //show food name on table
     $('#cls_name').html(data.cls_name);
     $('#cls_name1').html(data.cls_name1);
+    $('#cls_name2').html(data.cls_name2);
+    $('#cls_name3').html(data.cls_name3);
   }
 
   function upload() {
@@ -558,6 +683,74 @@
             });
   }
 
+//yang diubah
+//perhitungan energi total dll untuk persentase konsumsi tetap dan berdasarkan jenis kelamin 
+//tambahkan perhitungan kalori -- dipisah berdasarkan rumus harris utk dptkan kalori
+//kalori berdasarkan jenis kelamin, usia, tinggi ,berat, aktivitas
+
+function show_result(response) {
+      var opt = 'Dari hasil analisis, <strong>REOMAJAS</strong> menyatakan bahwa <strong>' + response.name + '</strong>' + ' <br>- Umur : ' + response.age + ' tahun' + ' <br>- Tinggi Badan : ' + response.height + ' CM' + ' <br>- Berat Badan : ' + response.weight + ' KG' + ' <br>Sebaiknya Anda mengkonsumsi <strong> KALORI </strong> sebesar ' + response.kalori 
+      + '<br> Selain itu, Anda juga '+ response.konsumsi + ' <br> <br> <a href="/media/result/report.docx" download>Unduh Laporan</a>'
+      $('#result').html(opt);
+    }
+
+      $('#insert').on( 'click', function () {
+            var dataform = document.getElementById('insert_form')
+            var fd = new FormData(dataform);
+            var error = false;
+            var errorCode = ''
+            var errorText = ''
+            $.ajax({
+                url: "http://127.0.0.1:8000/hasil_json/",
+                type: 'POST',
+                data: fd,
+                contentType: false,
+                processData: false,
+                beforeSend: function(){
+                  Swal.fire({
+                        title: 'Loading...',
+                        html: 'Mohon menunggu hasil perhitungan personalisasi.......',
+                        onBeforeOpen: () => {
+                          Swal.showLoading()
+                        }
+                      });
+                  },
+                success: function(response){
+                  dataform.reset();
+                  show_result(response);
+                  console.log(response);
+                },
+                error: function (jqXHR, exception) {
+                    console.log();
+                    errorCode = jqXHR.status;
+                    errorText = jqXHR.statusText;
+                    error = true;
+                    // Your error handling logic here..
+                },
+                complete:function(data){
+                  Swal.close();
+                  if (error == true) {
+                    Swal.fire({
+                      position: 'top-end',
+                      type: 'error',
+                      title: errorCode + ': ' + errorText,
+                      showConfirmButton: false,
+                      timer: 2000
+                    });
+                  } else{
+                    Swal.fire({
+                      position: 'top-end',
+                      type: 'success',
+                      title: 'Perhitungan personalisasi berhasil!',
+                      showConfirmButton: false,
+                      timer: 2000
+                    });
+                  }
+                }
+            });
+          });
+
+//batas
   function readURL(input, tag) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
@@ -574,6 +767,12 @@
 
     $('#uploadFile1').on('change', function() {
       readURL(this,'#img_preview1');
+    });
+    $('#uploadFile2').on('change', function() {
+      readURL(this,'#img_preview2');
+    });
+    $('#uploadFile3').on('change', function() {
+      readURL(this,'#img_preview3');
     });
 
 </script>
