@@ -574,7 +574,6 @@
       energy_needed = bmr * activity;
       konsumsi_energi = roundToTwo((energi_total / energy_needed) * 100);
 
-      konsumsi_energi = roundToTwo((energi_total / 2250) * 100);
       konsumsi_karbohidrat = roundToTwo((karbohidrat_total / 309) * 100);
       konsumsi_protein = roundToTwo((protein_total / 56) * 100);
       konsumsi_fat = roundToTwo((fat_total / 75) * 100);
@@ -715,12 +714,6 @@
 //perhitungan energi total dll untuk persentase konsumsi tetap dan berdasarkan jenis kelamin 
 //tambahkan perhitungan kalori -- dipisah berdasarkan rumus harris utk dptkan kalori
 //kalori berdasarkan jenis kelamin, usia, tinggi ,berat, aktivitas
-
-function show_result(response) {
-      var opt = 'Dari hasil analisis, <strong>REOMAJAS</strong> menyatakan bahwa <strong>' + response.name + '</strong>' + ' <br>- Umur : ' + response.age + ' tahun' + ' <br>- Tinggi Badan : ' + response.height + ' CM' + ' <br>- Berat Badan : ' + response.weight + ' KG' + ' <br>Sebaiknya Anda mengkonsumsi <strong> KALORI </strong> sebesar ' + response.kalori 
-      + '<br> Selain itu, Anda juga '+ response.konsumsi + ' <br> <br> <a href="/media/result/report.docx" download>Unduh Laporan</a>'
-      $('#result').html(opt);
-    }
 
 //batas
   function readURL(input, tag) {
