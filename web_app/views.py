@@ -1,17 +1,27 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, FileResponse
 from django.http import JsonResponse
 
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
-#yang ditambah
-from . import utils
+from django.utils.html import strip_tags
+from docxtpl import DocxTemplate
+from io import BytesIO
+
+def generate_report(data : dict):
+    template = DocxTemplate("media/template/template.docx")
+    result_path = 'media/result/reomajas-report.docx'
+    context = data
+    template.render(context)
+    template.save(result_path)
+    
+    return template
 
 def makanan(request):
     return render(request,'home.html')
 
-#ambek dari alzheimerai dan ubah disini
-def hasil_json(request):
+def report(request):
+    konsumsi = strip_tags(request.POST.get('konsumsi', ''))
 
     data = {
         'name': request.POST.get('name', ''),
@@ -20,7 +30,12 @@ def hasil_json(request):
         'weight': request.POST.get('weight', ''),
         'gender': request.POST.get('gender', ''),
         'activity': request.POST.get('activity', ''),
+        'kalori': request.POST.get('kalori', ''),
+        'konsumsi': konsumsi
     }
-    utils.gerate_report(data)
-
+    document = generate_report(data)
+    data = {
+        'status': 'ok',
+        'method': request.method
+    }
     return JsonResponse(data)

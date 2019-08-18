@@ -385,18 +385,18 @@
             <input type="text" name="name" id="name" class="form-control" placeholder="Nama Anda...." style="color:black;" />
             <br />
             <label>Usia</label>
-            <input type="text" name = "age" id="age" class="form-control" placeholder="Usia Anda dalam Tahun..." style="color:black;"/>
+            <input type="number" name = "age" id="age" class="form-control" placeholder="Usia Anda dalam Tahun..." style="color:black;"/>
             <br />
             <label>Tinggi Badan</label>
-            <input type="text" name = "height" id="height" class="form-control" placeholder="Tinggi Badan Anda dalam CM..." style="color:black;"/>
+            <input type="number" name = "height" id="height" class="form-control" placeholder="Tinggi Badan Anda dalam CM..." style="color:black;"/>
             <br />
             <label>Berat Badan</label>
-            <input type="text" name = "weight" id="weight" class="form-control" placeholder="Berat Badan Anda dalam KG..." style="color:black;"/>
+            <input type="number" name = "weight" id="weight" class="form-control" placeholder="Berat Badan Anda dalam KG..." style="color:black;"/>
             <br />
             <label>Jenis Kelamin</label>
             <select name="gender" class="form-control" id="gender" style="color:black;">
-                <option value="Laki-Laki">Laki-Laki </option>
-                <option value="Perempuan">Perempuan </option>
+                <option value="0">Laki-Laki </option>
+                <option value="1">Perempuan </option>
             </select>
             <label>Level Aktivitas</label>
             <select name="activity" class="form-control" id="activity" style="color:black;">
@@ -410,7 +410,7 @@
           </form>
           </div>  
         <div class="modal-footer">
-            <button class="btn btn-success" id="insert" data-dismiss="modal" onclick="konsumsi()">INSERT</button>
+            <button class="btn btn-success" id="insert" data-dismiss="modal">INSERT</button>
         </div>
        </div>
       </div>
@@ -432,6 +432,13 @@
   var nutrisi1;
   var nutrisi2;
   var nutrisi3;
+
+  var kalori;
+  var name;
+  var age;
+  var konsumsi;
+  var height;
+  var weight;
 
   $("#img_preview").click(function () {
     $('#uploadFile').click();
@@ -536,10 +543,7 @@
     //konsumsi();
   }
 
-//konsumsi%
-  //function konsumsi() {
-    //ambil data energi total dll
-    function konsumsi() {
+  $( "#insert" ).click(function() {
     var energi_total = $('#energi_total').text();
     var karbohidrat_total = $('#karbohidrat_total').text();
     var protein_total = $('#protein_total').text();
@@ -552,14 +556,16 @@
     var konsumsi_fiber;
     var activity_arr_men = [1.2,1.3,1.6,1.7,2.1,2.4]
     var activity_arr_women = [1.2,1.3,1.5,1.6,1.9,2.2]
-    var age = $('#age').val()
-    var name = $('#name').val()
-    var height = $('#height').val()
-    var weight = $('#weight').val()
+    age = $('#age').val()
+    name = $('#name').val()
+    height = $('#height').val()
+    weight = $('#weight').val()
     var energy_needed = 0
+    var gender = $("#gender option:selected").val()
+    var activity_val = $("#activity option:selected").val()
 
-    if ($('#gender').val() == 0) {
-      activity = activity_arr_men[$('#activity').val()]
+    if (gender == 0) {
+      activity = activity_arr_men[activity_val]
       bmr = 88.362 + (13.97 * weight) + (4.799 * height) + (5.677 * age);
       energy_needed = bmr * activity;
       konsumsi_energi = roundToTwo((energi_total / energy_needed) * 100);
@@ -569,7 +575,7 @@
       konsumsi_fat = roundToTwo((fat_total / 91) * 100);
       konsumsi_fiber = roundToTwo((fiber_total / 38) * 100);
     } else {
-      activity = activity_arr_women[$('#activity').val()]
+      activity = activity_arr_women[activity_val]
       bmr = 447.593 + (9.247 * weight) + (3.098 * height) + (4.330 * age);
       energy_needed = bmr * activity;
       konsumsi_energi = roundToTwo((energi_total / energy_needed) * 100);
@@ -579,10 +585,7 @@
       konsumsi_fat = roundToTwo((fat_total / 75) * 100);
       konsumsi_fiber = roundToTwo((fiber_total / 32) * 100);
     }
-    var opt = 'Dari hasil analisis, <strong>REOMAJAS</strong> menyatakan bahwa <strong>' + 
-      name + '</strong>' + ' <br>- Umur : ' + age + ' tahun' + 
-      ' <br>- Tinggi Badan : ' + height + ' CM' + ' <br>- Berat Badan : ' + 
-      weight + ' KG <br>';
+    var opt = '';
 
     if (konsumsi_energi >= 30 && konsumsi_energi <= 40) {
       opt += 'Konsumsi <strong>Energi</strong> cukup, '
@@ -622,12 +625,44 @@
     
 
 
-    $('#result').html(opt);
+    $('#result').html( 'Dari hasil analisis, <strong>REOMAJAS</strong> menyatakan bahwa <strong>' + 
+      name + '</strong>' + ' <br>- Umur : ' + age + ' tahun' + 
+      ' <br>- Tinggi Badan : ' + height + ' CM' + ' <br>- Berat Badan : ' + 
+      weight + ' KG <br>' + opt + '<br> <a href="/media/result/reomajas-report.docx" download>Download Report</a>');
+    
     $('#konsumsi_energi').html(konsumsi_energi + '%');
     $('#konsumsi_karbohidrat').html(konsumsi_karbohidrat + '%');
     $('#konsumsi_protein').html(konsumsi_protein + '%');
     $('#konsumsi_fat').html(konsumsi_fat + '%');
     $('#konsumsi_fiber').html(konsumsi_fiber + '%');
+    konsumsi = opt;
+    kalori = energy_needed;
+
+    report();
+  });
+
+  function report() {
+    max_cal = roundToTwo((40/100) * kalori);
+    min_cal = roundToTwo((30/100) * kalori);
+
+    output = 'tidak lebih dari ' + max_cal + ' kalori dan tidak kurang dari ' + min_cal + ' kalori';
+    $.ajax({
+                url: "/report/",
+                type: 'POST',
+                data: {
+                  name: name,
+                  height: height,
+                  age: age,
+                  weight : weight,
+                  konsumsi: konsumsi,
+                  gender: $('#gender').find(":selected").text(),
+                  activity: $('#activity').find(":selected").text(),
+                  kalori: output,
+                },
+                success: function(response,status,xhr){
+                  console.log(response)
+                }
+            });
   }
 
 //batas
